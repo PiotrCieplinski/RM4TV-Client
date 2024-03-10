@@ -36,7 +36,7 @@
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <h3 *ngIf="schedulesData.items.length === 0">Brak zajęć</h3>
+        <h2 *ngIf="schedulesData.items.length === 0">Brak zajęć</h2>
       </ng-container>
     </div>
     <div class="screen-container">

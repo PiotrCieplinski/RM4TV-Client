@@ -42,7 +42,7 @@
       }
 
       table,
-      h3 {
+      h2 {
         flex-grow: 1;
       }
 
@@ -60,7 +60,7 @@
         display: none;
       }
 
-      h3 {
+      h2 {
         color: white;
         text-align: center;
       }
