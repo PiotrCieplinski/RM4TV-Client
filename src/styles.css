@@ -4,6 +4,11 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #003C7D;
+
+    --mat-table-background-color: #003C7D;
+    --mat-table-row-item-outline-color: white;
+    --mat-table-row-item-label-text-color: white;
+    --mat-table-header-headline-color: white;
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -52,6 +52,12 @@
         overflow-y: scroll;
         display: block;
         scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      table::-webkit-scrollbar {
+        display: none;
       }
 
       h3 {
