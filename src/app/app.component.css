@@ -1,33 +1,85 @@
-  h1 {
-    text-align: center;
-    color: rgb(251, 186, 0);
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  height: 100vh;
 
-  table {
+  .schedule {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    color: white;
-  }
+    height: 40vh;
 
-  th, td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
+    h1 {
+      text-align: center;
+      color: rgb(251, 186, 0);
+    }
 
-  video, img {
-    width: 60%;
-  }
+    .schedule-container {
+      display: flex;
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
+      .university-logo-container {
+        width: 20rem;
+        img {
+          width: 20rem;
+        }
+      }
 
-  h3 {
-    color: white;
+      .department-logo-container {
+        display: flex;
+        align-items: center;
+        width: 20rem;
+
+        img {
+          width: 15rem;
+        }
+      }
+
+      table, h3 {
+        flex-grow: 1;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        color: white;
+        
+        th, td {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+      }
+
+      h3 {
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.screen-container {
+  display: flex;
+  width: 100%;
+  height: 60vh;
+
+  .screen-wrapper {
+    flex-grow: 1;
     text-align: center;
+
+    img, video {
+      height: 59vh; 
+    }
   }
+
+  .side-wrapper {
+    width: 10rem;
+    display: flex;
+    align-items: end;
+
+    img {
+      width: 10rem;
+    }
+  }
+}
