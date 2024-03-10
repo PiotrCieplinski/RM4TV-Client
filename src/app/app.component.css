@@ -47,20 +47,11 @@
       }
 
       table {
-        width: 100%;
-        border-collapse: collapse;
         margin-top: 0.5rem;
-        color: white;
         height: calc(50vh - 3.5rem);
         overflow-y: scroll;
         display: block;
-
-        th,
-        td {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
+        scroll-behavior: smooth;
       }
 
       h3 {
@@ -76,7 +67,7 @@
 
       img,
       video {
-        height: 49vh;
+        height: 45vh;
       }
     }
   }
