@@ -5,6 +5,7 @@ import { APISchedulesResponse } from '../models/api-schedules-response';
 import { CommonModule } from '@angular/common';
 import { delayWhen, repeat, interval } from 'rxjs';
 import { APIScreensResponse } from '../models/api-screens-response';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { APIScreensResponse } from '../models/api-screens-response';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  protected readonly API_Path = 'https://metet.polsl.pl/api';
+  protected readonly API_Path = environment.apiUrl;
   private readonly httpClient = inject(HttpClient);
   private first = true;
   private lastItemWasImage = false;

@@ -3,4 +3,5 @@ export interface APISchedulesReponseItem {
     name: string;
     teacher: string;
     room: string;
+    group: string;
 }
