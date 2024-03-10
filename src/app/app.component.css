@@ -1,50 +1,62 @@
 .container {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
+  flex-direction: row;
   height: 100vh;
 
-  .schedule {
-    width: 100%;
-    height: 40vh;
+  .side-wrapper {
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
 
-    h1 {
-      text-align: center;
-      color: rgb(251, 186, 0);
+    img {
+      width: 8rem;
     }
 
-    .schedule-container {
+    .qr-wrapper {
+      flex-grow: 1;
       display: flex;
+      align-items: end;
+    }
+  }
 
-      .university-logo-container {
-        width: 20rem;
-        img {
-          width: 20rem;
-        }
+  .content-wrapper {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    width: calc(100vw - 20rem);
+    gap: 2rem;
+
+    .schedule-container {
+      width: 100%;
+      height: 50vh;
+
+      h1 {
+        text-align: center;
+        color: rgb(251, 186, 0);
+        margin: 0.5rem;
+        height: 2rem;
       }
 
-      .department-logo-container {
-        display: flex;
-        align-items: center;
-        width: 20rem;
-
-        img {
-          width: 15rem;
-        }
-      }
-
-      table, h3 {
+      table,
+      h3 {
         flex-grow: 1;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 20px;
+        margin-top: 0.5rem;
         color: white;
-        
-        th, td {
+        height: calc(50vh - 3.5rem);
+        overflow-y: scroll;
+        display: block;
+
+        th,
+        td {
           border: 1px solid #dddddd;
           text-align: left;
           padding: 8px;
@@ -56,30 +68,16 @@
         text-align: center;
       }
     }
-  }
-}
 
-.screen-container {
-  display: flex;
-  width: 100%;
-  height: 60vh;
+    .screen-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
 
-  .screen-wrapper {
-    flex-grow: 1;
-    text-align: center;
-
-    img, video {
-      height: 59vh; 
-    }
-  }
-
-  .side-wrapper {
-    width: 10rem;
-    display: flex;
-    align-items: end;
-
-    img {
-      width: 10rem;
+      img,
+      video {
+        height: 49vh;
+      }
     }
   }
 }

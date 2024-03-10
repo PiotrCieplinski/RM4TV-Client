@@ -1,10 +1,10 @@
 <div class="container">
-  <div *ngIf="schedulesData$ | async as schedulesData" class="schedule">
-    <h1>{{schedulesData.name}}</h1>
-    <div class="schedule-container">
-      <div class="department-logo-container">
-        <img src="../assets/rm4.png">
-      </div>
+  <div class="side-wrapper">
+    <img src="../assets/rm4.png">
+  </div>
+  <div class="content-wrapper">
+    <div class="schedule-container" *ngIf="schedulesData$ | async as schedulesData">
+      <h1>{{schedulesData.name}}</h1>
       <table *ngIf="schedulesData.items.length > 0">
         <thead>
           <tr>
@@ -26,21 +26,20 @@
         </tbody>
       </table>
       <h3 *ngIf="schedulesData.items.length === 0">Brak zajęć</h3>
-      <div class="university-logo-container">
-        <img src="../assets/logo-uczelni-770.png">
-      </div>
+    </div>
+    <div class="screen-container">
+      <ng-container *ngIf="screensData$ | async as screensData">
+        <img *ngIf="screensData.isImage" [src]="screensData.path">
+        <video *ngIf="!screensData.isImage" autoplay controls [muted]="'muted'" loop>
+          <source [src]="screensData.path" type="video/mp4">
+        </video>
+      </ng-container>
     </div>
   </div>
-  <div class="screen-container">
-    <div class="side-wrapper"></div>
-    <div class="screen-wrapper">      
-      <ng-container *ngIf="screensData$ | async as screensData">
-      <img *ngIf="screensData.isImage" [src]="screensData.path">
-      <video *ngIf="!screensData.isImage" autoplay controls [muted]="'muted'" loop>
-        <source [src]="screensData.path" type="video/mp4">
-      </video>
-    </ng-container></div>
-    <div class="side-wrapper">
+  <div class="side-wrapper">
+    <img src="../assets/logo-uczelni.png">
+    <img src="../assets/logo-uczelnia-badawcza.png">
+    <div class="qr-wrapper">
       <img src="../assets/frame.png">
     </div>
   </div>
