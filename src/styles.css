@@ -1,14 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #003C7D;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #003c7d;
 
-    --mat-table-background-color: #003C7D;
-    --mat-table-row-item-outline-color: white;
-    --mat-table-row-item-label-text-color: white;
-    --mat-table-header-headline-color: white;
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  --mat-table-background-color: #003c7d;
+  --mat-table-row-item-outline-color: white;
+  --mat-table-row-item-label-text-color: white;
+  --mat-table-header-headline-color: white;
+  --mat-table-row-item-label-text-size: 24px;
+  --mat-table-header-headline-size: 24px;
+  --mat-table-row-item-label-text-line-height: 30px;
+}
+html,
+body {
+  height: 100%;
+}
+
+.mat-typography h1 {
+  font-size: 45px;
+}
