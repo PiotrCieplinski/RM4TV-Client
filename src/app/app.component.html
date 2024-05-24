@@ -2,30 +2,28 @@
   <h1>{{title$ | async}}</h1>
   <main>
     <div class="schedule-container">
-      <ng-container *ngIf="schedulesData$ | async as schedulesData">
-
-
-        @if(schedulesData.length > 0) {
-        @for(element of schedulesData; track element) {
-        <div class="lesson">
-          <strong class="name">{{element.name}}</strong>
-          <div class="teacher">
-            @for(t of element.teacher.split(','); track t) {
-            <div>{{t}}</div>
-            }
-          </div>
-          <div class="group">@if(element.group.trim().length > 0){
-            <strong>Sekcja:</strong> {{element.group}}}
-          </div>
-          <div class="room">{{element.room.indexOf('@') > -1 ? 'zajęcia zdalne' : element.room}}</div>
-          <div class="hours"><strong>Godz.:</strong> {{element.hours}}</div>
+      @if(schedulesData$ | async; as schedulesData) {
+      @if(schedulesData.length > 0) {
+      @for(element of schedulesData; track element) {
+      <div class="lesson">
+        <strong class="name">{{element.name}}</strong>
+        <div class="teacher">
+          @for(t of element.teacher.split(','); track t) {
+          <div>{{t}}</div>
+          }
         </div>
-        }
-        }
-        @else {
-        <h2>Brak zajęć</h2>
-        }
-      </ng-container>
+        <div class="group">@if(element.group.trim().length > 0){
+          <strong>Sekcja:</strong> {{element.group}}}
+        </div>
+        <div class="room">{{element.room.indexOf('@') > -1 ? 'zajęcia zdalne' : element.room}}</div>
+        <div class="hours"><strong>Godz.:</strong> {{element.hours}}</div>
+      </div>
+      }
+      }
+      @else {
+      <h2>Brak zajęć</h2>
+      }
+      }
     </div>
     <div class="screen-container">
       <ng-container *ngIf="screensData$ | async as screensData">

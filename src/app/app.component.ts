@@ -56,8 +56,8 @@ export class AppComponent {
       map((x) => {
         this.title.next(x.name);
         return x.items;
-      })
-      // repeat()
+      }),
+      repeat()
     );
 
   protected screensData$ = this.httpClient
