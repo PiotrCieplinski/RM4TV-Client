@@ -40,8 +40,8 @@ export class AppComponent {
         const currentInterval = this.nextSchedulesInterval;
         this.nextSchedulesInterval = Math.max(x.items.length * 1250, 10000);
         return interval(currentInterval);
-      }),
-      repeat()
+      })
+      // repeat()
     );
 
   protected screensData$ = this.httpClient

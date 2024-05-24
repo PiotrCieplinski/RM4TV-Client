@@ -2,15 +2,16 @@
   <main>
     <div class="schedule-container">
       <ng-container *ngIf="schedulesData$ | async as schedulesData">
-        <h1>{{schedulesData.name}}</h1>
+        <!-- <h1>{{schedulesData.name}}</h1> -->
 
         @if(schedulesData.items.length > 0) {
-        <div *ngFor="let element of schedulesData.items">
-          <div>{{element.name}}</div>
-          <div>{{element.teacher}}</div>
-          <div>{{element.group}}</div>
-          <div>{{element.room}}</div>
-          <div>{{element.hours}}</div>
+        <div class="lesson"
+             *ngFor="let element of schedulesData.items">
+          <div class="name">{{element.name}}</div>
+          <div class="teacher">{{element.teacher}}</div>
+          <div class="group">{{element.group}}</div>
+          <div class="room">{{element.room.indexOf('@') > -1 ? 'zdalne' : element.room}}</div>
+          <div class="hours">{{element.hours}}</div>
         </div>
         }
         @else {
