@@ -5,6 +5,13 @@
   width: 100vw;
   justify-content: space-between;
 
+  h1 {
+    text-align: center;
+    color: rgb(251, 186, 0);
+    margin: 1rem;
+    height: 4rem;
+  }
+
   main {
     display: flex;
     height: 100%;
@@ -12,7 +19,7 @@
 
     .schedule-container {
       width: 35%;
-      height: 85vh;
+      height: calc(85vh - 6rem);
       overflow: scroll;
 
       .lesson {
@@ -27,34 +34,38 @@
 
         grid-template-areas:
           "name name"
-          "teacher teacher"
-          "room room"
-          "hours group";
+          "hours room"
+          "teacher group";
 
         .hours {
           grid-area: hours;
+          text-align: left;
         }
 
         .name {
           grid-area: name;
+          text-align: center;
         }
 
         .teacher {
           grid-area: teacher;
+          text-align: left;
         }
 
         .room {
           grid-area: room;
+          text-align: right;
         }
 
         .group {
           grid-area: group;
+          text-align: right;
         }
       }
     }
 
     .screen-container {
-      height: 85vh;
+      height: calc(85vh - 6rem);
       width: 65%;
 
       img {

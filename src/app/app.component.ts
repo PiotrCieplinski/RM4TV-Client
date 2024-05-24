@@ -3,7 +3,15 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { APISchedulesResponse } from '../models/api-schedules-response';
 import { CommonModule } from '@angular/common';
-import { delayWhen, repeat, interval, tap } from 'rxjs';
+import {
+  delayWhen,
+  repeat,
+  interval,
+  tap,
+  Subject,
+  map,
+  BehaviorSubject,
+} from 'rxjs';
 import { APIScreensResponse } from '../models/api-screens-response';
 import { environment } from '../environments/environment';
 import { MatTableModule } from '@angular/material/table';
@@ -33,6 +41,10 @@ export class AppComponent {
   public displayedColumns = ['hours', 'name', 'teacher', 'room', 'group'];
   private interval: any;
 
+  private title = new BehaviorSubject<string>('Wczytywanie...');
+
+  public title$ = this.title.asObservable();
+
   protected schedulesData$ = this.httpClient
     .get<APISchedulesResponse>(`${this.API_Path}/schedules`)
     .pipe(
@@ -40,6 +52,10 @@ export class AppComponent {
         const currentInterval = this.nextSchedulesInterval;
         this.nextSchedulesInterval = Math.max(x.items.length * 1250, 10000);
         return interval(currentInterval);
+      }),
+      map((x) => {
+        this.title.next(x.name);
+        return x.items;
       })
       // repeat()
     );
