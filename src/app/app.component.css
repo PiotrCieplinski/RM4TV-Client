@@ -5,6 +5,27 @@
   width: 100vw;
   justify-content: space-between;
 
+  main {
+    display: flex;
+    height: 100%;
+
+    .schedule-container {
+      width: 20%;
+      height: 85vh;
+    }
+
+    .screen-container {
+      height: 85vh;
+      img {
+        height: 100%;
+      }
+
+      video {
+        height: 100%;
+      }
+    }
+  }
+
   .footer-wrapper {
     width: 100%;
     display: flex;
@@ -25,7 +46,7 @@
     }
   }
 
-  .schedule-container {
+  /* .schedule-container {
     width: calc(100% - 1rem);
     display: flex;
     flex-direction: column;
@@ -74,5 +95,5 @@
     video {
       height: calc(52vh - 6rem);
     }
-  }
+  } */
 }

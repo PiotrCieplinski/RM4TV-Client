@@ -8,11 +8,18 @@ import { APIScreensResponse } from '../models/api-screens-response';
 import { environment } from '../environments/environment';
 import { MatTableModule } from '@angular/material/table';
 import { ContentObserver } from '@angular/cdk/observers';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule, CommonModule, MatTableModule],
+  imports: [
+    RouterOutlet,
+    HttpClientModule,
+    CommonModule,
+    MatTableModule,
+    MatCardModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
