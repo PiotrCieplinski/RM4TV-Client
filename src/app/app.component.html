@@ -7,7 +7,7 @@
         @if(schedulesData.items.length > 0) {
         <div class="lesson"
              *ngFor="let element of schedulesData.items">
-          <div class="name">{{element.name}}</div>
+          <strong class="name">{{element.name}}</strong>
           <div class="teacher">{{element.teacher}}</div>
           <div class="group">{{element.group}}</div>
           <div class="room">{{element.room.indexOf('@') > -1 ? 'zdalne' : element.room}}</div>
