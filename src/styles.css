@@ -16,8 +16,18 @@ body {
 html,
 body {
   height: 100%;
+  --scroll-limit: 0;
 }
 
 .mat-typography h1 {
   font-size: 45px;
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(var(--scroll-limit));
+  }
 }

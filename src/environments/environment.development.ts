@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://metet.polsl.pl/api/',
+  apiUrl: 'http://localhost/RM4API/',
 };
