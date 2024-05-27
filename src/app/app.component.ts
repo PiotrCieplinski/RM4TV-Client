@@ -11,21 +11,13 @@ import { CommonModule } from '@angular/common';
 import { delayWhen, repeat, interval, map, BehaviorSubject } from 'rxjs';
 import { APIScreensResponse } from '../models/api-screens-response';
 import { environment } from '../environments/environment';
-import { MatTableModule } from '@angular/material/table';
 import { ContentObserver } from '@angular/cdk/observers';
-import { MatCardModule } from '@angular/material/card';
 import { LessonClass } from './models/lesson.class';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HttpClientModule,
-    CommonModule,
-    MatTableModule,
-    MatCardModule,
-  ],
+  imports: [RouterOutlet, HttpClientModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -49,7 +41,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
     .pipe(
       delayWhen((x) => {
         const currentInterval = this.nextSchedulesInterval;
-        this.nextSchedulesInterval = Math.max(x.items.length * 1250, 10000);
+        this.nextSchedulesInterval = Math.max(x.items.length * 3000, 10000);
         return interval(currentInterval);
       }),
       map((x) => {
@@ -103,7 +95,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
 
         divide = lessonsHeight - scheduleContainer.offsetHeight;
         divide = divide > 0 ? divide : 0;
-        duration = Math.ceil(divide / 70);
+        duration = Math.ceil(divide / 50);
       }
 
       document.body.style.setProperty(`--scroll-limit`, `${divide * -1}px`);
