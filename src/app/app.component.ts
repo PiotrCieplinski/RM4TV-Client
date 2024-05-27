@@ -1,20 +1,20 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AfterViewChecked, AfterViewInit, Component, inject } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  inject,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { APISchedulesResponse } from '../models/api-schedules-response';
 import { CommonModule } from '@angular/common';
-import {
-  delayWhen,
-  repeat,
-  interval,
-  map,
-  BehaviorSubject,
-} from 'rxjs';
+import { delayWhen, repeat, interval, map, BehaviorSubject } from 'rxjs';
 import { APIScreensResponse } from '../models/api-screens-response';
 import { environment } from '../environments/environment';
 import { MatTableModule } from '@angular/material/table';
 import { ContentObserver } from '@angular/cdk/observers';
 import { MatCardModule } from '@angular/material/card';
+import { LessonClass } from './models/lesson.class';
 
 @Component({
   selector: 'app-root',
@@ -42,6 +42,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
   private title = new BehaviorSubject<string>('Wczytywanie...');
 
   public title$ = this.title.asObservable();
+  private newData = false;
 
   protected schedulesData$ = this.httpClient
     .get<APISchedulesResponse>(`${this.API_Path}/schedules`)
@@ -52,10 +53,11 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
         return interval(currentInterval);
       }),
       map((x) => {
+        this.newData = true;
         this.title.next(x.name);
-        return x.items;
+        return x.items.map((i) => new LessonClass(i));
       }),
-      // repeat()
+      repeat()
     );
 
   protected screensData$ = this.httpClient
@@ -85,25 +87,28 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
   }
 
   ngAfterViewChecked(): void {
-    const scheduleContainer = document.getElementById('schedule-container') as HTMLDivElement;
-    const lessons = scheduleContainer.getElementsByClassName('lesson');
-    let divide = 0;
-    if(lessons.length > 0) {
-      let lastLesson: HTMLDivElement | null = null;
-      for(let i = 0; i < lessons.length; i++) {
-        let currentLesson = lessons[i] as HTMLDivElement
-        if(lastLesson === null || lastLesson.offsetTop < currentLesson.offsetTop) {
-          lastLesson = currentLesson;
+    if (this.newData) {
+      this.newData = false;
+      const scheduleContainer = document.getElementById(
+        'schedule-container'
+      ) as HTMLDivElement;
+      const lessons = scheduleContainer.getElementsByClassName('lesson');
+      let divide = 0;
+      let duration = 0;
+      if (lessons.length > 0) {
+        let lessonsHeight = lessons.length * 10;
+        for (let i = 0; i < lessons.length; i++) {
+          lessonsHeight += (lessons[i] as HTMLDivElement).offsetHeight;
         }
-      }
-      
-      divide = lastLesson!.offsetHeight + lastLesson!.offsetTop - scheduleContainer.offsetHeight - scheduleContainer.offsetTop;
-      divide = divide > 0 ? divide * -1 : 0;
 
-      console.log(divide, scheduleContainer, lastLesson);
+        divide = lessonsHeight - scheduleContainer.offsetHeight;
+        divide = divide > 0 ? divide : 0;
+        duration = Math.ceil(divide / 70);
+      }
+
+      document.body.style.setProperty(`--scroll-limit`, `${divide * -1}px`);
+      document.body.style.setProperty(`--animation-duration`, `${duration}s`);
     }
-    
-    document.body.style.setProperty(`--scroll-limit`, `${divide}px`);
   }
 
   tableContentChanged() {
@@ -119,17 +124,5 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
         }, 100);
       }, 200);
     }
-  }
-
-  runAnimation(el: HTMLDivElement): boolean {
-    const lessons = el.getElementsByClassName('lesson');
-    if(lessons.length > 0) {
-      const lastLesson = lessons[lessons.length - 1] as HTMLDivElement;
-      let divide = lastLesson.offsetHeight + lastLesson.offsetTop - el.offsetHeight - el.offsetTop;
-      divide = divide > 0 ? divide : 0;
-      document.documentElement.style.setProperty(`--scroll-limit`, `${divide}px`);
-      return divide > 0;
-    }
-    return false;
   }
 }

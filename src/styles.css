@@ -17,6 +17,7 @@ html,
 body {
   height: 100%;
   --scroll-limit: 0;
+  --animation-duration: 10s;
 }
 
 .mat-typography h1 {
@@ -25,9 +26,12 @@ body {
 
 @keyframes scroll {
   0% {
-      transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--scroll-limit));
   }
   100% {
-      transform: translateY(var(--scroll-limit));
+    transform: translateY(0);
   }
 }
