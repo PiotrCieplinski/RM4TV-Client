@@ -41,7 +41,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
     .pipe(
       delayWhen((x) => {
         const currentInterval = this.nextSchedulesInterval;
-        this.nextSchedulesInterval = Math.max(x.items.length * 3000, 10000);
+        this.nextSchedulesInterval = Math.max(x.items.length * 3000, 20000);
         return interval(currentInterval);
       }),
       map((x) => {
@@ -62,7 +62,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
           return interval(0);
         }
 
-        const res = this.lastItemWasImage ? interval(10000) : interval(120000);
+        const res = this.lastItemWasImage ? interval(20000) : interval(120000);
         this.lastItemWasImage = x.isImage;
         return res;
       }),
@@ -95,7 +95,7 @@ export class AppComponent implements AfterViewChecked, AfterViewInit {
 
         divide = lessonsHeight - scheduleContainer.offsetHeight;
         divide = divide > 0 ? divide : 0;
-        duration = Math.ceil(divide / 50);
+        duration = Math.ceil(divide / 30);
       }
 
       document.body.style.setProperty(`--scroll-limit`, `${divide * -1}px`);

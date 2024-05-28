@@ -8,8 +8,9 @@
   h1 {
     text-align: center;
     color: rgb(251, 186, 0);
-    margin: 1rem;
-    height: 4rem;
+    margin: 1vh;
+    height: 6vh;
+    line-height: 45px;
   }
 
   main {
@@ -19,8 +20,8 @@
     overflow: hidden;
 
     .schedule-container {
-      width: 35%;
-      height: calc(85vh - 6rem);
+      width: 30vw;
+      height: 78vh;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -44,7 +45,7 @@
         display: grid;
         gap: 20px;
         line-height: 30px;
-        width: 85%;
+        width: 90%;
 
         grid-template-areas:
           "name name name"
@@ -79,8 +80,8 @@
     }
 
     .screen-container {
-      height: calc(85vh - 6rem);
-      width: 65%;
+      height: 78vh;
+      width: 70vw;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -99,15 +100,16 @@
 
   .footer-wrapper {
     width: 100%;
-    display: flex;
-    flex-direction: row;
     background-color: white;
-    justify-content: space-between;
-    height: 15vh;
-    border-top: solid 5px rgb(251, 186, 0);
+    display: flex;
+    height: 13.5vh;
+    border-top: solid 0.5vh rgb(251, 186, 0);
+    justify-content: space-around;
 
     img {
-      height: calc(15vh - 5px);
+      height: 10vh;
+      margin-top: auto;
+      margin-bottom: auto;
     }
 
     .qr-wrapper {
@@ -116,55 +118,4 @@
       align-items: end;
     }
   }
-
-  /* .schedule-container {
-    width: calc(100% - 1rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-inline: 0.5rem;
-
-    h1 {
-      text-align: center;
-      color: rgb(251, 186, 0);
-      margin: 1rem;
-      height: 4rem;
-    }
-
-    table,
-    h2 {
-      flex-grow: 1;
-      min-width: 0;
-    }
-
-    table {
-      max-height: calc(40vh - 6rem);
-      overflow-y: scroll;
-      display: block;
-      scroll-behavior: smooth;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    table::-webkit-scrollbar {
-      display: none;
-    }
-
-    h2 {
-      color: white;
-      text-align: center;
-      margin-top: 2rem;
-    }
-  }
-
-  .screen-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-
-    img,
-    video {
-      height: calc(52vh - 6rem);
-    }
-  } */
 }
